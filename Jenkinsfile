@@ -11,9 +11,13 @@ pipeline {
             steps {
                 sh"""
                 python3 -m venv venv 
-                . venv/bin/activate"""
-                sh 'pip install pytest'
-                sh 'pytest --junit-xml test-reports/results.xml sources/test_calc.py'
+                . venv/bin/activate
+                
+                pip install pytest
+                pytest --junit-xml test-reports/results.xml sources/test_calc.py
+                """
+                // sh ''
+                // sh ''
             }
             post {
                 always {
