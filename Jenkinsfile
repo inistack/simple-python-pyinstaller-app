@@ -9,7 +9,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh'python3 -m venv venv . venv/bin/activate'
+                sh"""
+                python3 -m venv venv 
+                . venv/bin/activate"""
                 sh 'pip install pytest'
                 sh 'pytest --junit-xml test-reports/results.xml sources/test_calc.py'
             }
